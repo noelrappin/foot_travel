@@ -23,7 +23,7 @@ end
 Given /^a set of trips, some of which I have purchased$/ do
   @mayflower = Trip.create!(:name => "Mayflower Luxury Cruise")
   @shakespeare = Trip.create!(:name => "See Shakespeare's Plays")
-  Purchase.create!(:user => @user, :trip => @mayflower)
+  Purchase.create(:buyer => @user, :purchasable => @mayflower)
 end
 
 Then /^I see my purchase status on each trip$/ do

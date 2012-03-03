@@ -8,24 +8,8 @@ require 'action_view/helpers/number_helper'
 require 'presenters/trip_presenter'
 require 'services/date_range_service'
 
-class DumbTrip   
+class DumbTrip < OpenStruct 
   include DateRangeService
-
-  def initialize(values = {})
-    @values = values
-  end
-
-  def start_date
-    @values[:start_date] || Date.parse("January 22, 1971")
-  end
-
-  def end_date
-    @values[:end_date] || Date.parse("May 31, 1971")
-  end
-
-  def price
-    100.5
-  end
 end
 
 describe TripPresenter do
@@ -38,6 +22,8 @@ describe TripPresenter do
     let(:presenter) { TripPresenter.new(DumbTrip.new) }
 
     it "prints a date span" do
+      presenter.trip.start_date = Date.parse("January 22, 1971")
+      presenter.trip.end_date = Date.parse("May 31, 1971")
       presenter.date_span.should == "January 22, 1971 - May 31, 1971"    
     end
 
@@ -48,6 +34,7 @@ describe TripPresenter do
     end
 
     it "displays a price" do
+      presenter.trip.price = 100.5
       presenter.price_display.should == "$100.50"
     end
   end

@@ -1,14 +1,15 @@
 class TripPresenter < SimpleDelegator
   include ActionView::Helpers::NumberHelper
-  attr_accessor :trip
+  attr_accessor :trip, :buyer
 
-  def self.present_trips(trips)
-    trips.map { |trip| TripPresenter.new(trip) }
+  def self.present_trips(trips, user = nil)
+    trips.map { |trip| TripPresenter.new(trip, user) }
   end
 
-  def initialize(trip)
+  def initialize(trip, user = nil)
     super(trip)  
     @trip = trip
+    @buyer = user.extend(Buyer) if user
   end
 
   def date_span
@@ -18,6 +19,15 @@ class TripPresenter < SimpleDelegator
 
   def price_display
     number_to_currency(trip.price)
+  end
+
+  def purchased?
+    return false unless has_buyer?
+    buyer.has_purchased?(trip)
+  end
+
+  def has_buyer?
+    buyer.present? 
   end
 
 end

@@ -1,4 +1,4 @@
-.span3.trip_entry
+.span3.trip_entry[trip.trip]
   .trip_header= link_to trip.name, trip.trip
   .trip_tag= trip.tag_line
   .trip_dates= trip.date_span
@@ -8,3 +8,8 @@
     = link_to "Show Details", trip, :class => 'detail_toggle'
     .detail_hidden
       %div= trip.description
+  .purchase_info
+    - if trip.purchased?
+      .purchased You've Bought This
+    -else
+      .unpurchased= link_to "Buy Now", trip.trip

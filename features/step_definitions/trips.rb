@@ -7,7 +7,7 @@ When /^I go to the home page$/ do
 end
 
 Then /^I do not see purchase information$/ do
-  page.should_not have_selector("#trip_#{@trip.id} .purchase_info")
+  page.should_not have_selector("#trip_#{@trip.id} .purchase_info .purchased")
 end
 
 Given /^I am a logged in user$/ do
@@ -20,15 +20,18 @@ Given /^I am a logged in user$/ do
   click_button("Sign in")
 end
 
-Given /^a set of trips, some of which I have purchased$/ do
+Given /^a set of trips$/ do
   @mayflower = Trip.create!(:name => "Mayflower Luxury Cruise")
   @shakespeare = Trip.create!(:name => "See Shakespeare's Plays")
+end
+
+Given /^I have purchased some trips$/ do
   Purchase.create(:buyer => @user, :purchasable => @mayflower)
 end
 
 Then /^I see my purchase status on each trip$/ do
-  page.should have_selector("#trip_#{@mayflower.id} .purchased")
-  page.should_not have_selector("#trip_#{@mayflower.id} .unpurchased")
-  page.should_not have_selector("#trip_#{@shakespeare.id} .purchased")
-  page.should have_selector("#trip_#{@shakespeare.id} .unpurchased")
+  page.should have_selector("#trip_#{@mayflower.id} .purchase_info .purchased")
+  page.should_not have_selector("#trip_#{@mayflower.id} .purchase_info .unpurchased")
+  page.should_not have_selector("#trip_#{@shakespeare.id} .purchase_info .purchased")
+  page.should have_selector("#trip_#{@shakespeare.id} .purchase_info .unpurchased")
 end

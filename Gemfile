@@ -37,11 +37,11 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'jasmine'
   gem 'jasminerice'
-  #gem 'spinach-rails'
-
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'pry'
+  gem 'launchy'
+  gem 'cucumber-rails'
 end
 
 group :test do

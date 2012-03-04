@@ -18,6 +18,12 @@ describe TripPresenter do
         .should == [TripPresenter, TripPresenter]
   end
 
+  it "presents trips with a user" do
+    presenters = TripPresenter.present_trips([stub, stub], 
+        OpenStruct.new(:name => "user"))
+    presenters.first.buyer.name.should == "user"
+  end
+
   describe "with one presenter" do
     let(:presenter) { TripPresenter.new(DumbTrip.new) }
 
@@ -36,6 +42,25 @@ describe TripPresenter do
     it "displays a price" do
       presenter.trip.price = 100.5
       presenter.price_display.should == "$100.50"
+    end
+  end
+
+  describe "With a presenter and a user" do
+    let(:user) { OpenStruct.new(:purchases => []) }
+    let(:trip) { DumbTrip.new }
+    let(:presenter) { TripPresenter.new(trip, user) }
+
+    it "can determine the trip state of the purchase" do
+      presenter.should have_buyer
+      presenter.should_not be_purchased   
+      user.purchases << OpenStruct.new(:purchasable => trip)
+      presenter.should be_purchased
+    end
+
+    it "determines the trip state of the purchase if there is no user" do
+      presenter = TripPresenter.new(trip) 
+      presenter.should_not have_buyer
+      presenter.should_not be_purchased
     end
   end
 

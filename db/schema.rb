@@ -11,7 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120302212712) do
+ActiveRecord::Schema.define(:version => 20120307133334) do
+
+  create_table "extras", :force => true do |t|
+    t.integer  "trip_id"
+    t.string   "name"
+    t.text     "description"
+    t.float    "price"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "hotels", :force => true do |t|
+    t.integer  "trip_id"
+    t.string   "name"
+    t.text     "description"
+    t.float    "price"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "purchase_extras", :force => true do |t|
+    t.integer  "purchase_id"
+    t.integer  "extra_id"
+    t.string   "extra_type"
+    t.integer  "unit_count"
+    t.float    "unit_price"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "purchase_extras", ["extra_id"], :name => "index_purchase_extras_on_extra_id"
+  add_index "purchase_extras", ["purchase_id"], :name => "index_purchase_extras_on_purchase_id"
 
   create_table "purchases", :force => true do |t|
     t.integer  "buyer_id"
@@ -21,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20120302212712) do
     t.date     "purchase_date"
     t.date     "real_travel_date"
     t.float    "amount"
+    t.integer  "length_of_stay"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
@@ -53,6 +85,8 @@ ActiveRecord::Schema.define(:version => 20120302212712) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

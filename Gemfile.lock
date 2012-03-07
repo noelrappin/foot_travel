@@ -33,7 +33,6 @@ GEM
     arel (3.0.2)
     awesome_print (1.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap_forms (1.0.5)
     builder (3.0.0)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -205,6 +204,9 @@ GEM
       actionpack (>= 3.1)
       less-rails (~> 2.1.6)
       railties (>= 3.1)
+    twitter_bootstrap_form_for (1.0.5)
+      actionpack (~> 3)
+      railties (~> 3)
     tzinfo (0.3.31)
     uglifier (1.2.3)
       execjs (>= 0.3.0)
@@ -220,7 +222,6 @@ PLATFORMS
 DEPENDENCIES
   annotate
   awesome_print
-  bootstrap_forms
   coffee-rails (~> 3.2.1)
   cucumber-rails
   database_cleaner
@@ -241,4 +242,5 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   twitter-bootstrap-rails
+  twitter_bootstrap_form_for
   uglifier (>= 1.0.3)

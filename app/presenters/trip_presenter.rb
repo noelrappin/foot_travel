@@ -30,4 +30,12 @@ class TripPresenter < SimpleDelegator
     buyer.present? 
   end
 
+  def hotel_options
+    trip.hotels.map { |h| ["#{h.name} (#{number_to_currency(h.price)})", h.id]}
+  end
+
+  def present_extras
+    trip.extras.map { |h| ["#{h.name} (#{number_to_currency(h.price)})", h.id]}
+  end
+
 end

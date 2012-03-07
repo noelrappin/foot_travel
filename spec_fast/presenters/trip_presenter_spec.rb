@@ -1,10 +1,6 @@
 require 'fast_spec_helper'
 require 'delegate'
-require 'active_support/core_ext/date/conversions'
-require 'active_support/core_ext/hash/keys'
-require 'active_support/core_ext/hash/reverse_merge'
-require 'active_support/i18n'
-require 'action_view/helpers/number_helper'
+require_number_modules
 require 'presenters/trip_presenter'
 require 'services/date_range_service'
 
@@ -47,7 +43,7 @@ describe TripPresenter do
 
   describe "With a presenter and a user" do
     let(:user) { OpenStruct.new(:purchases => []) }
-    let(:trip) { DumbTrip.new }
+    let(:trip) { DumbTrip.new(:id => 3) }
     let(:presenter) { TripPresenter.new(trip, user) }
 
     it "can determine the trip state of the purchase" do
@@ -64,5 +60,24 @@ describe TripPresenter do
     end
   end
 
+  describe "With hotel information" do
+    let(:trip) { DumbTrip.new(:hotels => [hotel]) }
+    let(:presenter) { TripPresenter.new(trip) }
+    let(:hotel) { OpenStruct.new(:name => "Hilton", :price => 100, :id => 1)}
+
+    it "should return a select list of hotels" do
+      presenter.hotel_options.should == [["Hilton ($100.00)", 1]]  
+    end
+  end
+
+  describe "With extra information" do
+    let(:trip) { DumbTrip.new(:extras => [extra]) }
+    let(:presenter) { TripPresenter.new(trip) }
+    let(:extra) { OpenStruct.new(:name => "Tour", :price => 100, :id => 1)}
+
+    it "should description" do
+      presenter.present_extras.should == [["Tour ($100.00)", 1]]  
+    end
+  end
   
 end

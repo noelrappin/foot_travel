@@ -13,7 +13,7 @@ class TripsController < ApplicationController
   # GET /trips/1
   # GET /trips/1.json
   def show
-    @trip = Trip.find(params[:id])
+    @trip = TripPresenter.new(Trip.find(params[:id]))
 
     respond_to do |format|
       format.html # show.html.erb

@@ -10,7 +10,7 @@ gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 gem 'rails-backbone'
-gem 'bootstrap_forms'
+gem 'twitter_bootstrap_form_for'
 gem 'devise'
 
 # Gems used only for assets and not required

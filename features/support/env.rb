@@ -5,8 +5,6 @@
 # files.
 
 require 'cucumber/rails'
-require 'awesome_print'
-require 'pry'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd

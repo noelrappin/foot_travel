@@ -3,6 +3,7 @@ FootTravel::Application.routes.draw do
 
   resources :trips
   resources :users
+  resources :purchases
   root to: 'home#index'
 
   # The priority is based upon order of creation:

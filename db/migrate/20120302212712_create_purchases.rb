@@ -8,7 +8,7 @@ class CreatePurchases < ActiveRecord::Migration
       t.date :purchase_date
       t.date :real_travel_date
       t.float :amount
-
+      t.integer :length_of_stay
       t.timestamps
     end
 

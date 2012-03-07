@@ -7,6 +7,7 @@ guard :rspec, :cli => "--color --format nested",
   watch(%r{^spec_fast/(.+)\.rb$})     { |m| "spec_fast" } 
   watch(%r{^app/services(.+)\.rb$})     { |m| "spec_fast" } 
   watch(%r{^app/roles(.+)\.rb$})     { |m| "spec_fast" } 
+  watch(%r{^app/contexts(.+)\.rb$})     { |m| "spec_fast" } 
 
   watch('spec/spec_helper.rb')                        { "spec" }
   watch('config/routes.rb')                           { "spec/routing" }

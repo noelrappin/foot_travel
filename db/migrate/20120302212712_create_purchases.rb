@@ -11,6 +11,5 @@ class CreatePurchases < ActiveRecord::Migration
       t.integer :length_of_stay
       t.timestamps
     end
-
   end
 end

@@ -31,6 +31,7 @@ group :development do
   gem 'annotate'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'guard-cucumber'
 end
 
 group :development, :test do

@@ -1,5 +1,4 @@
 require 'fast_spec_helper'
-require 'delegate'
 require_number_modules
 require 'presenters/trip_presenter'
 require 'services/date_range_service'
@@ -10,7 +9,7 @@ end
 
 describe TripPresenter do
   it "presents trips" do
-    TripPresenter.present_trips([stub, stub]).map(&:class)
+    TripPresenter.present_trips([DumbTrip, DumbTrip]).map(&:class)
         .should == [TripPresenter, TripPresenter]
   end
 
@@ -21,11 +20,10 @@ describe TripPresenter do
   end
 
   describe "with one presenter" do
-    let(:presenter) { TripPresenter.new(DumbTrip.new) }
-
-    it "prints a date span" do
-      presenter.trip.start_date = Date.parse("January 22, 1971")
-      presenter.trip.end_date = Date.parse("May 31, 1971")
+    it "prints a date span" do 
+      trip = DumbTrip.new(:start_date => Date.parse("January 22, 1971"), 
+          :end_date => Date.parse("May 31, 1971"))
+      presenter = TripPresenter.new(trip)
       presenter.date_span.should == "January 22, 1971 - May 31, 1971"    
     end
 
@@ -36,7 +34,7 @@ describe TripPresenter do
     end
 
     it "displays a price" do
-      presenter.trip.price = 100.5
+      presenter = TripPresenter.new(DumbTrip.new(:price => 100.5))
       presenter.price_display.should == "$100.50"
     end
   end

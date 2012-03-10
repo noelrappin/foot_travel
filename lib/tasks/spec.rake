@@ -16,4 +16,5 @@ unless ENV['LOAD_RAILS'] == '1'
     task :all => ["spec:fast", "spec"]
   end
 
+  task :all_tests => ["spec:all", "cucumber"]
 end

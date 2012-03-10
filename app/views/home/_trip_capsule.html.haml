@@ -6,7 +6,7 @@
   .trip_price= trip.price_display
   .trip_links
     = link_to "Show Details", trip, :class => 'detail_toggle'
-    .detail_hidden
+    .detail_hidden{:style => "display: none"}
       %div= trip.description
   .purchase_info
     - if trip.purchased?

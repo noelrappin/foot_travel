@@ -7,7 +7,7 @@
 %div= @trip.price_display
 
 = form_for Purchase.new, :html => {:class => "form-horizontal"} do |f|
-  = hidden_field_tag("purchase[purchaseable_id]", @trip.id)
+  = hidden_field_tag("purchase[purchasable_id]", @trip.id)
   %fieldset
     %h2 Hotel Options
     = bootstrap_control(f, :length_of_stay) do 

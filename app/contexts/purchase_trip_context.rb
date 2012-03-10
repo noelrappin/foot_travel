@@ -26,7 +26,7 @@ class PurchaseTripContext
   end
 
   def call
-    trip_id = params.delete(:purchaseable_id)
+    trip_id = params.delete(:purchasable_id)
     hotel_id = params.delete(:lodging)
     extra_ids = params.delete(:extras)
     result = buyer.purchase(find_purchasable(trip_id), params, purchase_class)

@@ -814,8 +814,8 @@ User.delete_all
 
 $USERS[:fred] = User.create!(
     # :persistence_token => "persistence token",
-    # :first_name => "Fred",
-    # :last_name => "Flintstone",
+    :first_name => "Fred",
+    :last_name => "Flintstone",
     # :password_salt => "salt",
     :password => "password",
     :password_confirmation => "password",
@@ -823,37 +823,34 @@ $USERS[:fred] = User.create!(
     
 # fred.user_preferences.create(:kind => "century", :name => "1600s")
 
-# wilma = User.create!(
-#     :persistence_token => "persistence token",
-#     :first_name => "Wilma",
-#     :last_name => "Flintstone",
-#     :login => "wilma",
-#     :password_salt => "salt",
-#     :password => "password",
-#     :password_confirmation => "password",
-#     :email => "wilma@test.com")
+$USERS[:wilma] = User.create!(
+    # :persistence_token => "persistence token",
+    :first_name => "Wilma",
+    :last_name => "Flintstone",
+    # :password_salt => "salt",
+    :password => "password",
+    :password_confirmation => "password",
+    :email => "wilma@test.com")
     
-# barney = User.create!(
-#     :persistence_token => "persistence token",
-#     :first_name => "Barney",
-#     :last_name => "Rubble",
-#     :login => "barney",
-#     :password_salt => "salt",
-#     :password => "password",
-#     :password_confirmation => "password",
-#     :email => "barney@test.com")
+$USERS[:barney] = User.create!(
+    # :persistence_token => "persistence token",
+    :first_name => "Barney",
+    :last_name => "Rubble",
+    # :password_salt => "salt",
+    :password => "password",
+    :password_confirmation => "password",
+    :email => "barney@test.com")
         
-# betty = User.create!(
-#     :persistence_token => "persistence token",
-#     :first_name => "Betty",
-#     :last_name => "Rubble",
-#     :login => "betty",
-#     :password_salt => "salt",
-#     :password => "password",
-#     :password_confirmation => "password",
-#     :email => "betty@test.com")
+$USERS[:betty] = User.create!(
+    # :persistence_token => "persistence token",
+    :first_name => "Betty",
+    :last_name => "Rubble",
+    # :password_salt => "salt",
+    :password => "password",
+    :password_confirmation => "password",
+    :email => "betty@test.com")
     
-# Friend.delete_all    
+Relationship.delete_all    
     
-# Friend.create(:sender => fred, :receiver => barney)
-# Friend.create(:sender => wilma, :receiver => betty)
+Relationship.create(:sender => $USERS[:fred], :receiver => $USERS[:barney])
+Relationship.create(:sender => $USERS[:wilma], :receiver => $USERS[:betty])

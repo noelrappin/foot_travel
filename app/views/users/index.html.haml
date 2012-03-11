@@ -1,0 +1,18 @@
+.hero-unit
+  %h1 Friends
+
+%table.table.friend_list
+  %thead
+    %tr
+      %th Name
+      %th Status
+      %th Actions
+  - @friends.population.each do |friend|
+    %tr[friend]
+      %td= friend.full_name
+      %td= friend.status_with(current_user)
+      %td
+        - if friend.friends_with?(current_user)
+          = link_to "Remove Friend", '/', :class => :remove
+        - else
+          = link_to "Add Friend", '/', :class => :add

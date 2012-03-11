@@ -4,6 +4,12 @@ class OpenActiveModel < OpenStruct
     new(:id => id)
   end
 
+  def self.create(options = {})
+    result = new
+    result.update_attributes(options)
+    result
+  end
+
   def update_attributes(options = {})
     return if options.blank?
     options.each do |key, value|

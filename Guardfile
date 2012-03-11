@@ -26,9 +26,15 @@ group 'normal-specs' do
 end
   
 group 'cucumber' do
-  guard 'cucumber', :cli => '--format pretty' do
+  guard 'cucumber', :cli => '--no-profile --color --format pretty --strict --tags ~@wip' do
     watch(%r{^features/.+\.feature$})
-    watch(%r{^features/support/.+$})          { 'features' }
+    watch(%r{^features/support/.+$}) { 'features' }
     watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
+  end
+end
+
+group 'cucumber-wip' do
+  guard 'cucumber', :cli => '--no-profile --color --format pretty --strict --tags @wip' do
+    watch(%r{^app/views(.+)\.haml$}) { 'features' }
   end
 end

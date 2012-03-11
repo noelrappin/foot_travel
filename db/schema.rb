@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120307133334) do
+ActiveRecord::Schema.define(:version => 20120310132756) do
 
   create_table "extras", :force => true do |t|
     t.integer  "trip_id"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(:version => 20120307133334) do
     t.integer  "length_of_stay"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "sender_id"
+    t.string   "sender_type"
+    t.integer  "receiver_id"
+    t.string   "receiver_type"
+    t.string   "status"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "trips", :force => true do |t|

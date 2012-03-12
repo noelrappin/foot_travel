@@ -15,4 +15,5 @@
         - if friend.friends_with?(current_user)
           = link_to "Remove Friend", '/', :class => :remove
         - else
-          = link_to "Add Friend", '/', :class => :add
+          = link_to "Add Friend", relationships_path(:other => friend.id), 
+              :class => :add, :method => :post

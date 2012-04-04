@@ -1,8 +1,6 @@
 require 'fast_spec_helper'
 require 'roles/buyer'
 
-class Relationship < OpenActiveModel; end
-
 describe Friend do
   let(:me) { OpenStruct.new(:first_name => "Fred", :last_name => "Flintstone") }
   let(:friend) { OpenStruct.new(:first_name => "Barney")  }

@@ -10,3 +10,24 @@ def require_number_modules
   require 'active_support/i18n'
   require 'action_view/helpers/number_helper'
 end
+
+class Relationship < OpenActiveModel; end
+
+class Trip < OpenActiveModel
+end
+
+class Extra < OpenActiveModel
+end
+
+class Hotel < OpenActiveModel
+end
+
+class PurchaseExtra < OpenActiveModel
+end
+
+class Purchase < OpenActiveModel
+  def initialize(options = {})
+    super
+    self.purchase_extras = []
+  end
+end

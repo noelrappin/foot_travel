@@ -64,7 +64,7 @@ describe TripPresenter do
     let(:hotel) { OpenStruct.new(:name => "Hilton", :price => 100, :id => 1)}
 
     it "should return a select list of hotels" do
-      presenter.hotel_options.should == [["Hilton ($100.00)", 1]]  
+      presenter.hotel_options.should == [["Hilton:  ($100.00)", 1]]  
     end
   end
 
@@ -74,7 +74,7 @@ describe TripPresenter do
     let(:extra) { OpenStruct.new(:name => "Tour", :price => 100, :id => 1)}
 
     it "should description" do
-      presenter.present_extras.should == [["Tour ($100.00)", 1]]  
+      presenter.present_extras.should == [["Tour:  ($100.00)", 1]]  
     end
   end
   

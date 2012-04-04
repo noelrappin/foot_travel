@@ -1,25 +1,6 @@
 require 'fast_spec_helper'
 require 'contexts/purchase_trip_context'
 
-class Purchase < OpenActiveModel
-  def initialize(options = {})
-    super
-    self.purchase_extras = []
-  end
-end
-
-class Trip < OpenActiveModel
-end
-
-class Extra < OpenActiveModel
-end
-
-class Hotel < OpenActiveModel
-end
-
-class PurchaseExtra < OpenActiveModel
-end
-
 describe PurchaseTripContext do
   let(:current_user) { OpenStruct.new(:id => 3, :purchases => []) }
   let(:params) { {:length_of_stay => 4, :lodging => 5, :extras => [1, 4],

@@ -42,7 +42,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry'
   gem 'launchy'
-  gem 'cucumber-rails'
 end
 
 group :test do

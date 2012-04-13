@@ -1,7 +1,7 @@
 require 'fast_spec_helper'
-require 'roles/buyer'
+require 'foot_travel/roles/buyer'
 
-module Fast
+module Roles
 
   describe Friend do
     let(:me) { OpenStruct.new(:first_name => "Fred", :last_name => "Flintstone") }

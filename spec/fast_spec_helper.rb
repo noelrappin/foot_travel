@@ -11,21 +11,27 @@ def require_number_modules
   require 'action_view/helpers/number_helper'
 end
 
-module Fast
-
+module Roles
   class Relationship < OpenActiveModel; end
+  class Trip < OpenActiveModel; end
+  class Extra < OpenActiveModel; end
+  class Hotel < OpenActiveModel; end
+  class PurchaseExtra < OpenActiveModel; end
 
-  class Trip < OpenActiveModel
+  class Purchase < OpenActiveModel
+    def initialize(options = {})
+      super
+      self.purchase_extras = []
+    end
   end
+end
 
-  class Extra < OpenActiveModel
-  end
-
-  class Hotel < OpenActiveModel
-  end
-
-  class PurchaseExtra < OpenActiveModel
-  end
+module Contexts
+  class Relationship < OpenActiveModel; end
+  class Trip < OpenActiveModel; end
+  class Extra < OpenActiveModel; end
+  class Hotel < OpenActiveModel; end
+  class PurchaseExtra < OpenActiveModel; end
 
   class Purchase < OpenActiveModel
     def initialize(options = {})

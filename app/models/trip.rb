@@ -1,5 +1,5 @@
 class Trip < ActiveRecord::Base
-  include DateRangeService
+  include Services::DateRangeService
 
   has_many :hotels
   has_many :extras

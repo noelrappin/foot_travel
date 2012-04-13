@@ -6,6 +6,7 @@ Feature: Friends
     Then I see an option to remove my current friends
     And I see an option to add new friends
 
+  @wip
   Scenario: Adding a friend
     Given I am a logged in user
     When I add a friend

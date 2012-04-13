@@ -1,5 +1,5 @@
 class PurchaseExtra < ActiveRecord::Base
-  include ExtendedPriceCalculator
+  include Services::ExtendedPriceCalculator
 
   belongs_to :purchase
   belongs_to :extra, :polymorphic => true

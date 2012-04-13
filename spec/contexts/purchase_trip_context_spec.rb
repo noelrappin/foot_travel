@@ -1,7 +1,7 @@
 require 'fast_spec_helper'
-require 'contexts/purchase_trip_context'
+require 'foot_travel/contexts/purchase_trip_context'
 
-module Fast
+module Contexts
 
   describe PurchaseTripContext do
     let(:current_user) { OpenStruct.new(:id => 3, :purchases => []) }
